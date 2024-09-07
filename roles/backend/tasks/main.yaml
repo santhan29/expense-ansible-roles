@@ -2,6 +2,7 @@
   ansible.builtin.pip:
     name:
     - PyMySQL
+    - cryptography
     executable: pip3.9
 
 - name: disabling default nodeks
@@ -13,7 +14,7 @@
 - name: install nodejs
   ansible.builtin.package:
     name: "{{ item }}"
-    state: present
+    state: present 
   loop:
   - mysql
   - nodejs
