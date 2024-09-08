@@ -23,21 +23,26 @@
   ansible.builtin.user:
     name: expense
 
-- name: create app directory
-  ansible.builtin.file:
-    path: /app 
-    state: directory  #if not mentioned it will create file by default
+- name: import tasks from common role
+  ansible.builtin.import_role:
+    name: common
+    tasks_from: app-pre
 
-- name: download backend code
-  ansible.builtin.get_url:
-    url: https://expense-builds.s3.us-east-1.amazonaws.com/expense-backend-v2.zip
-    dest: /tmp/backend.zip
+# - name: create app directory
+#   ansible.builtin.file:
+#     path: /app 
+#     state: directory  #if not mentioned it will create file by default
 
-- name: extract the code
-  ansible.builtin.unarchive:
-    src: /tmp/backend.zip #by default ansible thinks this file is in ansible serverr
-    dest: /app 
-    remote_src: yes  #backend.zip file is also in remote source
+# - name: download backend code
+#   ansible.builtin.get_url:
+#     url: https://expense-builds.s3.us-east-1.amazonaws.com/expense-backend-v2.zip
+#     dest: /tmp/backend.zip
+
+# - name: extract the code
+#   ansible.builtin.unarchive:
+#     src: /tmp/backend.zip #by default ansible thinks this file is in ansible serverr
+#     dest: /app 
+#     remote_src: yes  #backend.zip file is also in remote source
 
 - name: install dependencies
   ansible.builtin.command: npm install 
