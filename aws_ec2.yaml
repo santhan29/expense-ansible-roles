@@ -8,3 +8,4 @@ hostnames:
   - private-ip-address
 compose:  ##this sets the ansible_host variable to connect with pvt ip 
   ansible_host: private_ip_address
+  
