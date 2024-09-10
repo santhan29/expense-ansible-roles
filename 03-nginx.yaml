@@ -1,5 +1,5 @@
 - name: nginx installing 
-  hosts: 172.31.87.222
+  hosts: nginx
   # hosts: all 
   become: yes  #taking the sudo access 
   serial: 3
